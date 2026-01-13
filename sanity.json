@@ -1,0 +1,26 @@
+{
+  "root": true,
+  "project": {
+    "name": "Sanity test"
+  },
+  "api": {
+    "projectId": "4pte7m7l",
+    "dataset": "production"
+  },
+  "plugins": [
+    "@sanity/vision"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision"
+      ]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./sanity/schemaTypes"
+    }
+  ]
+}
