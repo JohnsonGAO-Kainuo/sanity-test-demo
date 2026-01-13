@@ -2,9 +2,14 @@ import { client } from "@/sanity/lib/client";
 import { PortableText } from "@portabletext/react";
 
 async function getPageData(slug: string) {
-  const query = `*[_type == "page" && slug.current == $slug][0]`;
-  const data = await client.fetch(query, { slug });
-  return data;
+  try {
+    const query = `*[_type == "page" && slug.current == $slug][0]`;
+    const data = await client.fetch(query, { slug });
+    return data;
+  } catch (error) {
+    console.error("Sanity fetch error:", error);
+    return null;
+  }
 }
 
 export default async function About() {
