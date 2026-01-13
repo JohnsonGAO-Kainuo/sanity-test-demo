@@ -2,39 +2,70 @@
 
 這是一個使用 Next.js 和 Sanity CMS 構建的兩頁式網站。
 
-## 特色
-- **雙頁面結構**: 首頁 (Home) 和 關於我們 (About)。
-- **Sanity CMS 整合**: 所有內容均可通過 Sanity 後台進行管理。
-- **內置 CMS 後台**: 訪問 `/studio` 即可直接進入 Sanity 管理界面。
-- **現代技術棧**: Next.js (App Router), Tailwind CSS, TypeScript.
+## ✅ 已完成的配置清單
 
-## 如何開始
+### 核心配置
+- ✅ **Project ID**: `4pte7m7l`
+- ✅ **Dataset**: `production`
+- ✅ **Schema 部署**: 已同步到 Sanity 雲端
+- ✅ **CORS 設置**: 已允許 localhost:3333
+- ✅ **MCP 連接**: 已在 Cursor 中配置
 
-### 1. 設置 Sanity 項目
-您需要一個 Sanity 項目 ID。請訪問 [Sanity.io](https://www.sanity.io/) 創建一個新項目，然後：
-1. 在 `sanity/env.ts` 中填入您的 `projectId` 和 `dataset`。
-2. 在 Sanity 控制台中，將您的部署網址（或 `http://localhost:3000`）添加到 CORS 允許列表中。
+### 內容模型
+- ✅ **Page**: 用於管理首頁和關於頁
+- ✅ **Project**: 用於展示作品集
+- ✅ **Post**: 用於發布文章
 
-### 2. 本地開發
+### 技術棧
+- ✅ **Next.js 16** (App Router)
+- ✅ **Tailwind CSS v4**
+- ✅ **TypeScript**
+- ✅ **Sanity Studio (嵌入式)**
+
+## 🚀 如何使用
+
+### 1. 啟動開發環境
 ```bash
-npm install
 npm run dev
 ```
 
-### 3. 使用 CMS 管理內容
-1. 啟動項目後，訪問 `http://localhost:3000/studio`。
-2. 登錄您的 Sanity 帳號。
-3. 創建兩種類型的文檔：
-   - 一個 Slug 為 `home` 的 Page。
-   - 一個 Slug 為 `about` 的 Page。
-4. 發布後，前端頁面將自動更新。
+### 2. 訪問網站
+- **前端網站**: [http://localhost:3333](http://localhost:3333)
+- **內容管理後台**: [http://localhost:3333/studio](http://localhost:3333/studio)
 
-## 如何上傳到 GitHub
+### 3. 管理內容
+1. 訪問 `/studio` 並登錄您的 Sanity 帳號
+2. 創建內容時，請注意：
+   - **Page**: 首頁的 Slug 必須是 `home`，關於頁的 Slug 必須是 `about`
+   - **Project**: 會自動顯示在首頁的「精選項目」區域
+   - **Post**: 用於發布文章（需要前端頁面支持）
 
-由於自動化權限限制，請手動執行以下命令將代碼推送到您的 GitHub 倉庫：
+## 📦 部署到 Vercel
 
-```bash
-git remote add origin https://github.com/您的用戶名/您的倉庫名.git
-git branch -M main
-git push -u origin main
+### 環境變數設置
+在 Vercel 項目設置中添加以下環境變數：
 ```
+NEXT_PUBLIC_SANITY_PROJECT_ID=4pte7m7l
+NEXT_PUBLIC_SANITY_DATASET=production
+```
+
+### CORS 配置
+確保在 [Sanity 管理面板](https://www.sanity.io/manage/personal/project/4pte7m7l/api) 中添加您的 Vercel 網址到 CORS 允許列表。
+
+## 🔧 進階功能
+
+### Schema 部署
+當您修改了 Schema 後，運行以下命令同步到雲端：
+```bash
+npx sanity schema deploy
+```
+
+### 查看已部署的 Schema
+```bash
+npx sanity schema list
+```
+
+## 📚 相關資源
+- [Sanity 官方文檔](https://www.sanity.io/docs)
+- [Next.js 文檔](https://nextjs.org/docs)
+- [您的 Sanity 項目控制台](https://www.sanity.io/manage/personal/project/4pte7m7l)
