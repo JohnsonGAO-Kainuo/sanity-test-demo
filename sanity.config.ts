@@ -5,8 +5,7 @@ import { projectId, dataset } from './sanity/env'
 import { schemaTypes } from './sanity/schemaTypes'
 
 export default defineConfig({
-  // 回歸嵌入模式：在您的網站端口下，通過 /studio 訪問
-  basePath: '/studio',
+  // 移除 basePath，回歸官方默認行為：一進去就是後台
   projectId,
   dataset,
   plugins: [structureTool(), visionTool()],
