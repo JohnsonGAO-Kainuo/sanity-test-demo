@@ -5,7 +5,9 @@ import { projectId, dataset } from './sanity/env'
 import { schemaTypes } from './sanity/schemaTypes'
 
 export default defineConfig({
-  // 移除 basePath，回歸官方默認行為：一進去就是後台
+  // 設置 basePath 為 /studio，這樣無論是在 localhost 還是 Vercel，
+  // 都能通過 /studio 路徑進入後台
+  basePath: '/studio',
   projectId,
   dataset,
   plugins: [structureTool(), visionTool()],
