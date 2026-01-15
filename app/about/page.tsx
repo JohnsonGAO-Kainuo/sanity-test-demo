@@ -1,6 +1,9 @@
 import { client } from "@/sanity/lib/client";
 import { PortableText } from "@portabletext/react";
 
+// 強制 Next.js 每次請求都重新獲取數據，實現「秒級同步」
+export const revalidate = 0;
+
 async function getPageData(slug: string) {
   try {
     const query = `*[_type == "page" && slug.current == $slug][0]{ _id, title, slug, content }`;
